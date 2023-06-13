@@ -5,5 +5,5 @@ class CategorieModel {
   CategorieModel({
     this.imageAssetUrl = "IMAGEASSETURL",
     this.categorieName = "CATEGORYNAME",
-});
+  });
 }

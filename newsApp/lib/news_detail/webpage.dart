@@ -36,14 +36,14 @@ class _WebPageState extends State<WebPage> {
           style: TextStyle(color: Theme.of(context).iconTheme.color),
         ),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Theme.of(context).iconTheme
-                .color),
+            icon: Icon(Icons.arrow_back,
+                color: Theme.of(context).iconTheme.color),
             onPressed: () => Navigator.of(context).pop()),
         centerTitle: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
       ),
-      body:  WebviewScaffold(
+      body: WebviewScaffold(
         url: finalurl,
       ),
     );

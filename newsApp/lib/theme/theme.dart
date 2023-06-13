@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../model/newsmodel.dart';
-
 class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
 
@@ -12,25 +10,12 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  int _count = 0;
-  List<NewsModel> items = [];
+  List<String> _selectedItem = [];
 
-  void addCount() {
-    _count++;
-    notifyListeners();
-  }
+  List<String> get selectedItem => _selectedItem;
 
-  void addItems(NewsModel data) {
-    items.add(data);
-    notifyListeners();
-  }
-
-  int get count {
-    return _count;
-  }
-
-  List<NewsModel> get itemsList {
-    return items;
+  void addItem(String val) {
+    _selectedItem.add(val);
   }
 }
 

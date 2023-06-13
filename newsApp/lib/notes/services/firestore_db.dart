@@ -38,7 +38,7 @@ class FireDB {
         .orderBy("date")
         .get()
         .then((querySnapshot) {
-         for (var result in querySnapshot.docs) {
+      for (var result in querySnapshot.docs) {
         Map note = result.data();
 
         NotesDatabase.instance.insertEntry(Note(
@@ -48,7 +48,8 @@ class FireDB {
             createdTime: note["date"].toDate(),
             pin: false,
             isArchive: false)); //Add Notes In Database
-      }});
+      }
+    });
   }
 
   updateNoteFirestore(Note note) async {

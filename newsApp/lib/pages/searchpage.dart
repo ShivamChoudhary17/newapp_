@@ -22,7 +22,6 @@ class _SearchPageState extends State<SearchPage> {
     "Technology",
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,8 @@ class _SearchPageState extends State<SearchPage> {
         iconTheme: Theme.of(context).iconTheme,
         title: Text(
           "QuickNEWS",
-          style: TextStyle(color: Theme.of(context).iconTheme.color, fontSize: 20),
+          style:
+              TextStyle(color: Theme.of(context).iconTheme.color, fontSize: 20),
         ),
         leading: IconButton(
             icon: Icon(Icons.arrow_back,
@@ -44,10 +44,10 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: Stack(fit: StackFit.loose, children: [
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
           padding: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
-              color: Colors.grey[400], borderRadius: BorderRadius.circular(24)),
+              color: Colors.grey[200], borderRadius: BorderRadius.circular(24)),
           child: Row(
             children: [
               GestureDetector(
@@ -57,15 +57,15 @@ class _SearchPageState extends State<SearchPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Category(Query:
-                                searchController.text
-                                .toLowerCase(),)));
+                            builder: (context) => Category(
+                                  Query: searchController.text.toLowerCase(),
+                                )));
                   }
                 },
                 child: Container(
-                  margin: const EdgeInsets.fromLTRB(5, 0, 16, 0),
-                  child: Icon(CupertinoIcons.search,
-                      color: Theme.of(context).iconTheme.color),
+                  margin: const EdgeInsets.fromLTRB(12, 0, 16, 0),
+                  child: Icon(CupertinoIcons.doc_text_search,
+                      weight: 16, color: Colors.black),
                 ),
               ),
               Expanded(
@@ -87,22 +87,22 @@ class _SearchPageState extends State<SearchPage> {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(top: MediaQuery.of(context).size.width/4),
-
-          padding: const EdgeInsets.only(top: 100, left: 165),
-          child: Column(
-             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              for (var i in navBarItem)
-                Text(i,
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(
-                        color: Theme.of(context).iconTheme.color,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500)),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i in navBarItem)
+                  Text(i,
+                      textDirection: TextDirection.rtl,
+                      style: TextStyle(
+                          color: Theme.of(context).iconTheme.color,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500)),
+              ],
+            ),
+          ],
         )
       ]),
     );

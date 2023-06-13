@@ -5,7 +5,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import '../../auth_/auth.dart';
 import '../../auth_/login_info.dart';
 import '../services/firestore_db.dart';
-import 'home_note.dart';
+import '../../pages/home_note.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -83,13 +83,17 @@ class _LoginState extends State<Login> {
                         await signInWithGoogle(); // function helps to signIn
                         final User? currentUser = _auth.currentUser;
                         LocalDataSaver.saveLoginData(true);
-                        LocalDataSaver.saveImg(currentUser!.photoURL.toString());
+                        LocalDataSaver.saveImg(
+                            currentUser!.photoURL.toString());
                         LocalDataSaver.saveMail(currentUser.email.toString());
                         LocalDataSaver.saveSyncSet(false);
-                        LocalDataSaver.saveName(currentUser.displayName.toString());
+                        LocalDataSaver.saveName(
+                            currentUser.displayName.toString());
                         await FireDB().getAllStoredNotes();
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => const HomeNote()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeNote()));
                       }),
                     ],
                   ),

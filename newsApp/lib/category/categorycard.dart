@@ -6,7 +6,9 @@ import 'category.dart';
 class CategoryCard extends StatelessWidget {
   final String imageAssetUrl, categoryName;
 
-  CategoryCard({Key? key, required this.imageAssetUrl, required this.categoryName}) : super(key: key);
+  CategoryCard(
+      {Key? key, required this.imageAssetUrl, required this.categoryName})
+      : super(key: key);
 
   int index = 0;
   List<String> navBarItem = [
@@ -26,8 +28,8 @@ class CategoryCard extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => Category(
-                  Query: categoryName,
-                )));
+                      Query: categoryName,
+                    )));
       },
       child: Container(
         margin: const EdgeInsets.all(14),

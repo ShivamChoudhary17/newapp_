@@ -6,14 +6,13 @@ class NewsModel {
   late String newsContent;
   late String status;
 
-  NewsModel({
-    this.newsHead = "HEADING",
-    this.newsDes = "NEWS_DESCRIPTION",
-    this.newsImg = "IMAGE",
-    this.newsUrl = "URL",
-    this.newsContent = "CONTENT",
-    this.status = "STATUS"
-  });
+  NewsModel(
+      {this.newsHead = "HEADING",
+      this.newsDes = "NEWS_DESCRIPTION",
+      this.newsImg = "IMAGE",
+      this.newsUrl = "URL",
+      this.newsContent = "CONTENT",
+      this.status = "STATUS"});
 
   factory NewsModel.fromMap(Map news) {
     return NewsModel(

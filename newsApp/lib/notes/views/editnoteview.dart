@@ -44,8 +44,9 @@ class _EditNoteViewState extends State<EditNoteView> {
                     uniqueID: widget.note!.uniqueID);
                 await NotesDatabase.instance.updateNote(newNote);
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => const BottomNavBar
-                  ()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BottomNavBar()));
               },
               icon: const Icon(Icons.save_outlined))
         ],

@@ -1,16 +1,17 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import '../../bottomNavBar/bottomnavigationbar.dart';
 import 'editnoteview.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import '../color/colors.dart';
 import '../services/db.dart';
-import '../pages/home_note.dart';
+import '../../pages/home_note.dart';
 import '../model/my_note_model.dart';
 
 class NoteView extends StatefulWidget {
-  Note? note;
+  final Note? note;
   NoteView({required this.note});
 
   @override
@@ -31,8 +32,9 @@ class _NoteViewState extends State<NoteView> {
               onPressed: () async {
                 await NotesDatabase.instance.pinNote(widget.note);
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => const HomeNote
-                  ()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BottomNavBar()));
               },
               icon: Icon(
                   widget.note!.pin ? Icons.push_pin : Icons.push_pin_outlined)),
@@ -41,8 +43,9 @@ class _NoteViewState extends State<NoteView> {
               onPressed: () async {
                 await NotesDatabase.instance.archNote(widget.note);
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => const HomeNote
-                  ()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BottomNavBar()));
               },
               icon: Icon(widget.note!.isArchive
                   ? Icons.archive
@@ -51,9 +54,8 @@ class _NoteViewState extends State<NoteView> {
               splashRadius: 17,
               onPressed: () async {
                 await NotesDatabase.instance.deleteNote(widget.note);
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => const HomeNote
-                  ()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => BottomNavBar()));
               },
               icon: const Icon(Icons.delete_forever_outlined)),
           IconButton(
@@ -74,13 +76,15 @@ class _NoteViewState extends State<NoteView> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              "Created On ${ DateFormat('dd-MM-yyyy - kk:mm').format(widget.note!.createdTime)}",
+              "Created On ${DateFormat('dd-MM-yyyy - kk:mm').format(widget.note!.createdTime)}",
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),
             ),
-                const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Text(
               widget.note!.title,
               style: const TextStyle(
@@ -88,7 +92,7 @@ class _NoteViewState extends State<NoteView> {
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),
-                const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(

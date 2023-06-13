@@ -7,18 +7,12 @@ import 'auth_/login.dart';
 import 'auth_/login_info.dart';
 import 'bottomNavBar/bottomnavigationbar.dart';
 
-/*void main() {
-  runApp(const MyApp());
-}*/
 Future<void> main() async {
 // Initialized FireBase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
-/*class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);*/
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -30,7 +24,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool isLogIn = false;
 
-
   // Checks if user is logged or not
   getLoggedInState() async {
     await LocalDataSaver.getLogData().then((value) {
@@ -39,7 +32,6 @@ class _MyAppState extends State<MyApp> {
       });
     });
   }
-
 
   @override
   void initState() {
@@ -59,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
           debugShowCheckedModeBanner: false,
-          home:  AnimatedSplashScreen(
+          home: AnimatedSplashScreen(
             splashIconSize: 230,
             splash: Image.asset(
               'images/news.png',

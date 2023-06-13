@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import '../model/newsmodel.dart';
-import '../pages/newsdetails.dart';
+import '../news_detail/newsdetails.dart';
 
 class SearchNewsCategory extends StatefulWidget {
   String Query = "";
@@ -15,7 +15,6 @@ class SearchNewsCategory extends StatefulWidget {
 }
 
 class _SearchNewsCategoryState extends State<SearchNewsCategory> {
-
   List<NewsModel> newsModelList = <NewsModel>[];
   bool isLoading = true;
   String url = "";
@@ -44,7 +43,6 @@ class _SearchNewsCategoryState extends State<SearchNewsCategory> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +55,7 @@ class _SearchNewsCategoryState extends State<SearchNewsCategory> {
         ),
         leading: IconButton(
           icon:
-          Icon(Icons.arrow_back, color: Theme.of(context).iconTheme.color),
+              Icon(Icons.arrow_back, color: Theme.of(context).iconTheme.color),
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
@@ -85,143 +83,143 @@ class _SearchNewsCategoryState extends State<SearchNewsCategory> {
             isLoading
                 ? CircularProgressIndicator(color: Colors.red)
                 : Column(
-              children: [
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: newsModelList.length,
-                  itemBuilder: (context, index) {
-                    try {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NewsWeb(
-                                      newsContent:
-                                      newsModelList[index]
-                                          .newsContent,
-                                      newsUrl: newsModelList[index]
-                                          .newsUrl,
-                                      newsImg: newsModelList[index]
-                                          .newsImg,
-                                      newsHead: newsModelList[index]
-                                          .newsHead,
-                                    )));
-                          },
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                            elevation: 1.0,
-                            child: Stack(
-                              children: [
-                                /*
+                    children: [
+                      ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: newsModelList.length,
+                        itemBuilder: (context, index) {
+                          try {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => NewsWeb(
+                                                newsContent:
+                                                    newsModelList[index]
+                                                        .newsContent,
+                                                newsUrl: newsModelList[index]
+                                                    .newsUrl,
+                                                newsImg: newsModelList[index]
+                                                    .newsImg,
+                                                newsHead: newsModelList[index]
+                                                    .newsHead,
+                                              )));
+                                },
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  elevation: 1.0,
+                                  child: Stack(
+                                    children: [
+                                      /*
                                       newsModelList[index]
                                               .newsImg.contains('"https')
                                           ? */
-                                ClipRRect(
-                                    borderRadius:
-                                    BorderRadius.circular(15),
-                                    child: Image.network(
-                                      newsModelList[index].newsImg,
-                                      fit: BoxFit.cover,
-                                      height: 300,
-                                      width: double.infinity,
-                                    )),
-                                /*: Container(
+                                      ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          child: Image.network(
+                                            newsModelList[index].newsImg,
+                                            fit: BoxFit.cover,
+                                            height: 300,
+                                            width: double.infinity,
+                                          )),
+                                      /*: Container(
                                         height: 300,
                                         width: double.infinity,decoration:
                                   BoxDecoration(
                                     color: Colors.white
                                   ),*/
 
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.circular(15),
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              Colors.black12
-                                                  .withOpacity(0),
-                                              Colors.black
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                          )),
-                                      padding: EdgeInsets.fromLTRB(
-                                          15, 15, 10, 8),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            newsModelList[index].newsHead,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontWeight:
-                                                FontWeight.bold),
-                                          ),
-                                          Text(
-                                            newsModelList[index]
-                                                .newsDes
-                                                .length >
-                                                40
-                                                ? "${newsModelList[index].newsDes.substring(0, 50)}..."
-                                                : newsModelList[index]
-                                                .newsDes,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
-                                          ),
-                                        ],
-                                      )),
+                                      Positioned(
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    Colors.black12
+                                                        .withOpacity(0),
+                                                    Colors.black
+                                                  ],
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                )),
+                                            padding: EdgeInsets.fromLTRB(
+                                                15, 15, 10, 8),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  newsModelList[index].newsHead,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  newsModelList[index]
+                                                              .newsDes
+                                                              .length >
+                                                          40
+                                                      ? "${newsModelList[index].newsDes.substring(0, 50)}..."
+                                                      : newsModelList[index]
+                                                          .newsDes,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12),
+                                                ),
+                                              ],
+                                            )),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ),
+                              ),
+                            );
+                          } catch (e) {
+                            return Container();
+                          }
+                        },
+                      ),
+                      Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                          child: Icon(
+                            CupertinoIcons.check_mark_circled_solid,
+                            color: Colors.lightGreen,
+                            size: 55,
+                          )),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                        child: Text(
+                          "You'r All Caught Up",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.w600),
                         ),
-                      );
-                    } catch (e) {
-                      return Container();
-                    }
-                  },
-                ),
-                Container(
-                    padding:
-                    EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                    child: Icon(
-                      CupertinoIcons.check_mark_circled_solid,
-                      color: Colors.lightGreen,
-                      size: 55,
-                    )),
-                Container(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  child: Text(
-                    "You'r All Caught Up",
-                    style: TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.w600),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                        child: Text(
+                          "For Now",
+                          style: TextStyle(
+                              fontSize: 28, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Container(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                  child: Text(
-                    "For Now",
-                    style: TextStyle(
-                        fontSize: 28, fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),

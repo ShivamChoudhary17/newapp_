@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../bottomNavBar/bottomnavigationbar.dart';
 import '../color/colors.dart';
 import 'package:uuid/uuid.dart';
-import '../pages/home_note.dart';
+import '../../pages/home_note.dart';
 import '../model/my_note_model.dart';
 import '../services/db.dart';
 
@@ -28,6 +29,7 @@ class _CreateNoteViewState extends State<CreateNoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: bgColor,
       appBar: AppBar(
         backgroundColor: bgColor,
@@ -43,9 +45,8 @@ class _CreateNoteViewState extends State<CreateNoteView> {
                     pin: false,
                     isArchive: false,
                     createdTime: DateTime.now()));
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => const HomeNote
-                  ()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => BottomNavBar()));
               },
               icon: const Icon(Icons.save_outlined))
         ],

@@ -7,15 +7,13 @@ import 'package:newsapp/model/categorymodel.dart';
 import 'package:newsapp/model/model.dart';
 
 class Cateogory extends StatefulWidget {
-  final setcategory;
-  Cateogory(this.setcategory);
+  Cateogory();
   @override
-  _CateogoryState createState() => _CateogoryState(this.setcategory);
+  _CateogoryState createState() => _CateogoryState();
 }
 
 class _CateogoryState extends State<Cateogory> {
-  var setcategory;
-  _CateogoryState(this.setcategory);
+  _CateogoryState();
   spin() {
     return SpinKitRotatingPlain(color: Colors.red);
   }
@@ -57,7 +55,7 @@ class _CateogoryState extends State<Cateogory> {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+            scrollDirection: Axis.vertical,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

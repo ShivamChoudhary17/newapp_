@@ -9,9 +9,9 @@ Future<User?> signInWithGoogle() async {
   try {
     //SIGNING IN WITH GOOGLE
     final GoogleSignInAccount? googleSignInAccount =
-    await googleSignIn.signIn();
+        await googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
-    await googleSignInAccount!.authentication;
+        await googleSignInAccount!.authentication;
 
     //CREATING CREDENTIAL FOR FIREBASE
     final AuthCredential credential = GoogleAuthProvider.credential(
@@ -35,7 +35,6 @@ Future<User?> signInWithGoogle() async {
   }
   return null;
 }
-
 
 void signOut() async {
   await googleSignIn.signOut();

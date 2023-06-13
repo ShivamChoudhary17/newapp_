@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 
 import '../model/newsmodel.dart';
-import '../pages/newsdetails.dart';
+import '../news_detail/newsdetails.dart';
 
 class Category extends StatefulWidget {
   String Query = "";
@@ -28,7 +28,8 @@ class _CategoryState extends State<Category> {
           "&apiKey"
           "=3d44e64c78a94ed58931cec839a62219";
     } else {
-      url = "https://newsapi.org/v2/top-headlines?language=en&category=$query&apiKey=3d44e64c78a94ed58931cec839a62219";
+      url =
+          "https://newsapi.org/v2/top-headlines?language=en&category=$query&apiKey=3d44e64c78a94ed58931cec839a62219";
     }
 //https://newsapi.org/v2/top-headlines?language=en&category=$query&apiKey=3d44e64c78a94ed58931cec839a62219
     Response response = await get(Uri.parse(url));

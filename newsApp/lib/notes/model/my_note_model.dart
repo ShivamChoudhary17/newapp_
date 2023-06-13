@@ -65,9 +65,8 @@ class Note {
         title: json[NotesImpNames.title] as String,
         content: json[NotesImpNames.content] as String,
         uniqueID: json[NotesImpNames.uniqueID] as String?,
-        createdTime:
-            DateTime.parse(json[NotesImpNames.createdTime] as String));
-     //DateFormat('dd-MM-yyyy - kk:mm').format(widget.note!.createdTime);
+        createdTime: DateTime.parse(json[NotesImpNames.createdTime] as String));
+    //DateFormat('dd-MM-yyyy - kk:mm').format(widget.note!.createdTime);
   }
 
   Map<String, Object?> toJson() {

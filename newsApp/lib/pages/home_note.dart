@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'dart:ui';
-import '../../auth_/auth.dart';
-import '../../auth_/login.dart';
-import '../../auth_/login_info.dart';
-import '../../theme/changethemebutton.dart';
-import '../model/my_note_model.dart';
-import '../search/SearchPage.dart';
-import '../views/noteview.dart';
-import '../views/createnoteview.dart';
-import '../side_drawer/sidemenubar.dart';
-import '../color/colors.dart';
-import '../services/db.dart';
-
+import '../auth_/auth.dart';
+import '../auth_/login.dart';
+import '../auth_/login_info.dart';
+import '../notes/model/my_note_model.dart';
+import '../notes/search/SearchPage.dart';
+import '../notes/views/noteview.dart';
+import '../notes/views/createnoteview.dart';
+import '../notes/side_drawer/sidemenubar.dart';
+import '../notes/color/colors.dart';
+import '../notes/services/db.dart';
 
 class HomeNote extends StatefulWidget {
   const HomeNote({Key? key}) : super(key: key);
@@ -75,20 +72,8 @@ class _HomeNote extends State<HomeNote> {
 
   @override
   Widget build(BuildContext context) {
-    final text = MediaQuery.of(context).platformBrightness == Brightness.dark
-        ? 'DarkTheme' : 'LightTheme';
     return isLoading
         ? Scaffold(
-            appBar: AppBar(
-        iconTheme: Theme.of(context).iconTheme,
-        title: Text(
-          "QuickNEWS",
-          style: TextStyle(color: Theme.of(context).iconTheme.color),
-        ),
-        centerTitle: true,
-        backgroundColor: bgColor,
-        elevation: 0,
-      ),
             backgroundColor: bgColor,
             body: Center(
               child: CircularProgressIndicator(
@@ -97,32 +82,25 @@ class _HomeNote extends State<HomeNote> {
             ),
           )
         : Scaffold(
-        appBar: AppBar(
-          iconTheme: Theme.of(context).iconTheme,
-          title: Text(
-            "QuickNEWS",
-            style: TextStyle(color: Theme.of(context).iconTheme.color),
-          ),
-          centerTitle: true,
-          backgroundColor: bgColor,
-          elevation: 0,
-        ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const CreateNoteView()));
-              },
-              backgroundColor: cardColor,
-              child: const Icon(
-                Icons.add,
-                size: 50,
+            floatingActionButton: SizedBox(
+              height: 130,
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CreateNoteView()));
+                },
+                backgroundColor: cardColor,
+                child: const Icon(
+                  Icons.add,
+                  size: 50,
+                ),
               ),
             ),
             endDrawerEnableOpenDragGesture: true,
             key: _drawerKey,
-            //drawer: const SideMenu(),
+            drawer: const SideMenu(),
             backgroundColor: bgColor,
             body: RefreshIndicator(
               onRefresh: () {
@@ -145,7 +123,7 @@ class _HomeNote extends State<HomeNote> {
                         margin: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 10),
                         width: MediaQuery.of(context).size.width,
-                        height: 55,
+                        height: 50,
                         decoration: BoxDecoration(
                             color: cardColor,
                             borderRadius: BorderRadius.circular(8),
@@ -193,9 +171,10 @@ class _HomeNote extends State<HomeNote> {
                                               Text(
                                                 "Search Your Notes",
                                                 style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
                                                     color:
                                                         white.withOpacity(0.5),
-                                                    fontSize: 14),
+                                                    fontSize: 16),
                                               )
                                             ])),
                                   )
@@ -239,8 +218,8 @@ class _HomeNote extends State<HomeNote> {
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => const
-                                                Login()));
+                                                builder: (context) =>
+                                                    const Login()));
                                       },
                                       child: CircleAvatar(
                                         //AVATAR
